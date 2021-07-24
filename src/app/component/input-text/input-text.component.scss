@@ -1,0 +1,17 @@
+input.csi_input_text:focus{
+    background-color:#FFF;
+    border-bottom: 3px solid #05E;
+}
+input.csi_input_text{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #CCC;
+    border-radius: 0px;
+}
+input.csi_input_text.has-error{
+    border-bottom: 2px solid #D22;
+}
+.csi_input_text[disabled], .csi_input_text[readonly], fieldset[disabled] .csi_input_text{
+  color:#222;
+}

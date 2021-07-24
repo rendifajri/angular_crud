@@ -1,0 +1,133 @@
+.csi_btn_inside{
+    margin-left: -25px;
+    z-index: 100;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.csi_btn_inside{
+    outline: none;
+}
+.input-group>.form-control:not(:last-child){
+    border-radius: .2rem!important;
+}
+@media (max-width: 576px){
+    .form-inline .custom-select, .form-inline .input-group {
+        width: auto;
+    }
+}
+
+::ng-deep .datatable-body .progress-linear {
+    display: block;
+    position: sticky;
+    width: 100%;
+    height: 5px;
+    padding: 0;
+    margin: 0;
+    top: 0;
+}
+::ng-deep .datatable-body .progress-linear .container {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 5px;
+    transform: translate(0, 0) scale(1, 1);
+    background-color: #aad1f9;
+}
+::ng-deep .datatable-body .progress-linear .container .bar {
+    transition: all 0.2s linear;
+    animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: transform 0.2s linear;
+    background-color: #106cc8;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+}
+@keyframes query {
+  0% {
+    opacity: 1;
+    transform: translateX(35%) scale(0.3, 1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0, 1);
+  }
+}
+
+::ng-deep .datatable-header-cell, ::ng-deep .sort-btn.datatable-icon-up:before, ::ng-deep .sort-btn.datatable-icon-down:after{
+    color: #FFF!important;
+}
+::ng-deep .datatable-header-cell.sortable .sort-btn{
+    color: #CCC!important;
+}
+::ng-deep .datatable-header{
+    background-color: #58F;
+    border-radius: 5px 5px 0px 0px;
+}
+::ng-deep .datatable-header-cell{
+    border: solid 1px #AAA;
+    padding-top: 0.25rem!important;
+    padding-bottom: 0.25rem!important;
+}
+::ng-deep .datatable-body-row{
+    background-color: #AAA;
+}
+::ng-deep .datatable-row-wrapper:last-child .datatable-body-row .datatable-body-cell{
+    margin-bottom: 2px;
+}
+::ng-deep .datatable-body-cell{
+    padding:3px 10px!important;
+    /*background: none!important;*/
+    margin: 0.5px 1px;
+}
+::ng-deep .datatable-body-cell:first-child{
+    margin-left: 2px;
+}
+::ng-deep .datatable-body-cell:last-child{
+    margin-right: 1.5px;
+}
+::ng-deep .datatable-row-even .datatable-body-cell{
+    background-color: #EEE!important;
+}
+::ng-deep .datatable-row-odd .datatable-body-cell{
+    background-color: #FFF!important;
+}
+::ng-deep .ngx-datatable.table-hover .datatable-body .datatable-body-row.active .datatable-body-cell{
+    background-color: #CDF!important;
+}
+
+::ng-deep .pager li:nth-child(2){
+    border: 1px solid #CCC;
+    padding: 0px!important;
+    border-radius: 4px 0px 0px 4px;
+}
+::ng-deep .pager li:nth-last-child(2){
+    border: 1px solid #CCC;
+    padding: 0px!important;
+    border-radius: 0px 4px 4px 0px;
+}
+::ng-deep .pager li:nth-child(2) a i:before, ::ng-deep .pager li:nth-last-child(2) a i:before{
+    top: 0px!important;
+}
+::ng-deep .pager li:not(:first-child):not(:last-child):not(:nth-child(2)):not(:nth-last-child(2)){
+    border: 1px solid #CCC;
+    //height: 30px;
+    padding-top: 2px!important;
+}
+::ng-deep .pager li:not(:first-child):not(:last-child) a{
+    color: #0182FE;
+    font-size: 16px;
+    opacity: 1;
+}
+::ng-deep .pager li.pages.active{
+    background-color: #0182FE;
+}
+::ng-deep .pager li.pages.active a {
+    color: #FFF;
+    font-weight: normal!important;
+}

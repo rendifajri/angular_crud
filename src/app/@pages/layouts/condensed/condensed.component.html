@@ -1,0 +1,126 @@
+<!-- WRAP LAYOUT IF BOXED -->
+<div class="container" *ngIf="_boxed; else basicLayoutBlock">
+	<ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</div>
+<ng-template #basicLayoutBlock>
+	<ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</ng-template>
+
+<!-- YOUR LAYOUT CONTENT GOES INSIDE HERE -->
+<ng-template #contentTpl>
+	<!-- PAGE SIDEBAR -->
+	<pg-sidebar>
+		<!-- <ng-template #sideBarOverlay>
+			<div class="row">
+			<div class="col-xs-6 no-padding">
+				<a href="javascript:void(0)" class="p-l-40"><img src="assets/img/demo/social_app.svg" alt="socail">
+				</a>
+			</div>
+			<div class="col-xs-6 no-padding">
+				<a href="javascript:void(0)" class="p-l-10"><img src="assets/img/demo/email_app.svg" alt="socail">
+				</a>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-xs-6 m-t-20 no-padding">
+				<a href="javascript:void(0)" class="p-l-40"><img src="assets/img/demo/calendar_app.svg" alt="socail">
+				</a>
+			</div>
+			<div class="col-xs-6 m-t-20 no-padding">
+				<a href="javascript:void(0)" class="p-l-10"><img src="assets/img/demo/add_more.svg" alt="socail">
+				</a>
+			</div>
+			</div>
+		</ng-template> -->
+		<ng-template #sideBarHeader>
+			<div class="text-left">
+				<img src="assets/img/logo_blue_2x.png" alt="logo" class="brand ml-5 mr-3" pgRetina src1x="assets/img/logo_blue_2x.png" src2x="assets/img/logo_blue_2x.png" width="60" >
+				<div class="sidebar-header-controls">
+					<!-- <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20 hidden-md-down" [class.active]="_menuDrawerOpen" (click)="toggleMenuDrawer()"><i class="fa fa-angle-down fs-16"></i>
+					</button> -->
+					<button type="button" class="btn btn-link d-lg-inline-block d-xlg-inline-block d-md-inline-block d-sm-none d-none" (click)="toggleMenuPin()"><i class="fa fa-list"></i>
+					</button>
+				</div>
+			</div>
+
+		</ng-template>
+		<ng-template #menuItems>
+			<pg-menu-items [Items]="menuLinks">
+			</pg-menu-items>
+		</ng-template>
+	</pg-sidebar>
+	<!-- PAGE CONTAINER -->
+	<page-container>
+		<pg-header [boxed]="_boxed">
+			<!-- START MOBILE SIDEBAR TOGGLE -->
+			<a href="javascript:void(0);" class="btn-link toggle-sidebar d-lg-none pg pg-menu" (click)="toggleMobileSidebar()"></a>
+			<!-- END MOBILE SIDEBAR TOGGLE -->
+			<div class="">
+				<!-- START EMAIL MOBILE TOGGLE -->
+				<a href="javascript:void(0);" class="toggle-secondary-sidebar" (click)="toggleSecondarySideBar()" *ngIf="_layoutOption === 'email'">Inbox <span class="text-info">(12)</span> <span class="caret"></span></a>
+				<!-- END EMAIL MOBILE TOGGLE -->
+
+				<div class="brand inline" [class.d-none]="_layoutOption === 'email'">
+					<img src="assets/img/logo_blue_2x.png" alt="logo" pgRetina src1x="assets/img/logo_blue_2x.png" src2x="assets/img/logo_blue_2x.png" width="70">
+				</div>
+				<!-- END NOTIFICATIONS LIST -->
+				<!-- <a href="javascript:void(0)" class="search-link d-lg-inline-block d-none" (click)="openSearch($event)"><i class="pg pg-search"></i>Type anywhere to <span class="bold">search</span></a> -->
+			</div>
+			<div class="d-flex align-items-center">
+				<!-- START User Info-->
+				<div class="pull-left p-r-10 fs-14 font-heading d-lg-block d-none">
+				  <span class="semi-bold" id="names-user">Administrator</span>
+				</div>
+				<!-- <a href="javascript:void(0)" class="header-icon pg btn-link mt-1 mr-2 sm-no-margin d-inline-block" (click)="openQuickView($event)">
+					<img src="../../../../assets/img/bell.svg" ><!--[ngStyle]="{ 'transform': notif_read == true ? 'rotate(23deg)' : 'rotate(0deg)' }"-- >
+        </a> -->
+				<div class="dropdown pull-right d-lg-block" dropdown>
+					<div class="profile-dropdown-toggle" style="cursor: pointer" dropdownToggle id="profileDropdown">
+						<span class="thumbnail-wrapper d32 circular inline">
+						<img src="{{ pic }}" [style.content]="'url('+pic+')'" alt="" pgRetina width="32" height="32">
+						</span>
+					</div>
+					<div class="dropdown-menu dropdown-menu-right profile-dropdown" *dropdownMenu role="menu">
+						<a href="javascript:void(0)" (click)="logout()" class="clearfix bg-master-lighter dropdown-item py-3">
+							<i class="fs-13 pg pg-power"></i> Logout
+						</a>
+					</div>
+				</div>
+				<!-- END User Info-->
+			</div>
+		</pg-header>
+		<div class="page-content-wrapper {{_pageContainerClass}}">
+			<!-- START PAGE CONTENT -->
+			<div class="content {{_contentClass}}">
+				<router-outlet></router-outlet>
+			</div>
+			<!-- END PAGE CONTENT -->
+			<!-- START COPYRIGHT -->
+			<ng-template [ngIf]="_footer">
+				<div class="container-fluid container-fixed-lg footer bg-white">
+					<div class="copyright sm-text-center">
+						<p class="small no-margin pull-left sm-pull-reset">
+							<span>Copyright &copy; 2021</span>&nbsp;
+							<span>Rendi Fajrianto</span>.&nbsp;
+							<span>All rights reserved.</span>
+							<span class="sm-block">
+								<a class="m-l-10 m-r-10 text-black" href="javascript:void(0)">Terms of use</a>
+								<span>|</span>
+								<a class="m-l-10 text-black" href="javascript:void(0)">Privacy Policy</a>
+							</span>
+						</p>
+
+						<div class="clearfix">
+						</div>
+					</div>
+				</div>
+				<!-- END COPYRIGHT -->
+			</ng-template>
+		</div>
+	</page-container>
+	<!-- QUICKSEARCH -->
+	<!-- <app-search-overlay></app-search-overlay> -->
+	<!-- QUICKVIEW -->
+	<app-quickview></app-quickview>
+</ng-template>
+

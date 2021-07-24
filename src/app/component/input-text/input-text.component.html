@@ -1,0 +1,15 @@
+<input
+    class="form-control form-control-sm csi_input_text"
+    [class.has-error]="error != ''"
+    [type]="type"
+    [name]="name"
+    [placeholder]="placeholder"
+    [(ngModel)]="csiModel"
+    (ngModelChange)="csiModelChange.emit(csiModel)"
+    [required]="required"
+    [readonly]="readonly"
+    (keyup)="keyup.emit($event);_blur($event.target)"
+    (blur)="blur.emit($event);_blur($event.target)"
+    (change)="change.emit($event)"
+/>
+<small class="form-text text-danger" [class]="error != '' ? 'show' : 'hide'">{{error}}</small>

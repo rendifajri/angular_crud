@@ -1,0 +1,20 @@
+<div class="input-group">
+    <input
+        type="text"
+        class="form-control form-control-sm date_focus"
+        placeholder="Date"
+        [name]="name"
+        (focus)="focus()"
+        (blur)="blur()"
+        [bsConfig]="bsConfig"
+        bsDatepicker
+        #compCsiModel="bsDatepicker"
+        [(ngModel)]="csiModel"
+        (ngModelChange)="csiModelChange.emit(csiModel);blur()"
+        [required]="required"
+    />
+    <div class="input-group-append">
+        <button class="btn btn-sm date_focus" type="button" (click)="compCsiModel.show()" (focus)="focus()" (blur)="blur()"><span class="fa fa-calendar"></span></button>
+    </div>
+</div>
+<small class="form-text text-danger" [class]="error != '' ? 'show' : 'hide'">{{error}}</small>

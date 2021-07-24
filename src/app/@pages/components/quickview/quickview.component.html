@@ -1,0 +1,43 @@
+<div id="quickview" class="quickview-wrapper" [class.open]=isOpen>
+	<!-- Nav tabs -->
+	<tabset>
+
+		<tab heading="" id="quickview-alerts" [active]=true customClass="full-height head-alert" style="padding-bottom: 10px;">
+		  <div class="view-port clearfix" id="alerts">
+			<!-- BEGIN Alerts View !-->
+			<div class="view bg-white">
+					<div class="full-height d-flex flex-column">
+						<!-- BEGIN View Header !-->
+						<div class="navbar navbar-default navbar-sm">
+							<div class="navbar-inner">
+								<!-- BEGIN Header Controler !-->
+								<!-- <a href="javascript:;" class="inline action p-l-10 link text-master" data-navigate="view" data-view-port="#chat" data-view-animation="push-parrallax">
+									<i class="pg pg-more"></i>
+								</a> -->
+								<!-- END Header Controler !-->
+								<div class="view-heading">
+									Notifications
+								</div>
+								<!-- BEGIN Header Controler !-->
+								<!-- <a href="javascript:void(0)" class="inline action p-r-10 pull-right link text-master">
+									<i class="pg pg-search"></i>
+								</a> -->
+								<!-- END Header Controler !-->
+							</div>
+						</div>
+						<!-- END View Header !-->
+						<!-- BEGIN Alert List !-->
+						<div perfectScrollbar class="full-height list-view boreded no-top-border">
+							<!-- BEGIN List Group !-->
+							<!-- END List Group !-->
+						</div>
+						<!-- END Alert List !-->
+					</div>
+			</div>
+			<!-- EEND Alerts View !-->
+		  </div>
+		</tab>
+
+	</tabset>
+	<a class="btn-link quickview-toggle" (click)="toggle()" style="color: white;"><i class="pg pg-close"></i></a>
+	</div>

@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "/usr/local/var/www/csi-framework/api-mrms"
+		},
+		{
+			"path": "/usr/local/var/www/csi-framework/frontend"
+		}
+	]
+}

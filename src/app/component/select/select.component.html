@@ -1,0 +1,17 @@
+    <ng-select
+        class="csi_select"
+        [class.has-error]="error != ''"
+        [name]="name"
+        [placeholder]="placeholder"
+        (search)="search($event)"
+        [(ngModel)]="csiModel"
+        (ngModelChange)="csiModelChange.emit(csiModel)"
+        (clear)="clear()"
+        (blur)="blur()"
+        (change)="change.emit($event)"
+        [loading]="loading"
+    >
+        <!--[searchFn]="customSearchFn"<ng-option value="">Select Option</ng-option>-->
+        <ng-option *ngFor="let option of arrData" [value]="option[indexVal]">{{option[indexText]}}</ng-option>
+    </ng-select>
+    <small class="form-text text-danger" [class]="error != '' ? 'show' : 'hide'">{{error}}</small>

@@ -1,0 +1,19 @@
+.form-control, .input-group-append .btn{
+    border: 2px solid #CCC;
+    padding: .15rem .5rem .35rem .5rem;
+    height: calc(1.8125rem + 2px);
+}
+/*.form-control:focus, .input-group-append .btn:focus, .form-control:focus + .input-group-append .input-group-append .btn{
+    background-color:#FFF;
+    border: 2px solid #88F;
+}
+.input-group-append .btn:focus {
+    .input-group-append ~ {
+            background-color:#F00!important;
+    }
+    /*.input-group-append & {
+        .input-group &{
+            background-color:#F00!important;
+        }
+    }* /
+}*/

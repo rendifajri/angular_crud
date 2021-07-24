@@ -1,0 +1,4 @@
+<button [type]="type" [style.min-height]="minHeight" class="btn rounded {{classExtra}}" [disabled]="disabled">
+    <span *ngIf="!isLoading"><ng-content></ng-content></span>
+    <ngx-bootstrap-spinner *ngIf="isLoading" [isButtonSpinner]="true" size="small" loadingText=""></ngx-bootstrap-spinner>
+</button>

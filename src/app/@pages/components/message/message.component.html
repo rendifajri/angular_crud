@@ -1,0 +1,42 @@
+<div class="pgn push-on-sidebar-open pgn-{{_options.Style}}">
+    <div class="alert alert-{{Message.type}}">
+        <div *ngIf="_options.Style === 'bar'; else determineBlock" [class.container]="_enableHorizontalContainer"> 
+            <div >
+                <span>{{ Message.content }}</span> 
+                <button class="close" (click)="onClickClose()"  type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            </div>
+        </div>
+        <ng-template #determineBlock>
+            <div *ngIf="_options.Style === 'circle'; else standardBlock">
+                <div class="pgn-thumbnail">
+                    <div>
+                        <i class="fa fa-bell" style="font-size: 25px; margin-left: 15px; margin-top: 10px; color: #ffffff;"></i>
+                    </div>
+                </div>
+                <div class="pgn-message">
+                    <div>
+                        <p class="bold" style="color: #fff!important; font-size: 15px;">{{ _options.Title}}</p>
+                        <p style="color: #fff!important;">{{ Message.content }}</p>
+                    </div>
+                </div>  
+                <button type="button" class="close" (click)="onClickClose()"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>              
+            </div>
+        </ng-template>
+        <ng-template #standardBlock>
+                <div>
+                    <button style="color: #fff!important;" class="close" (click)="onClickClose()" type="button"><span aria-hidden="true" style="color: #fff!important;">×</span><span style="color: #fff!important;" class="sr-only">Close</span></button>
+                    <table>
+                        <tr>
+                            <td>
+                                <i class="fa fa-bell" style="font-size: 20px; margin-right: 10px; margin-top: 5px; color: #ffffff;"></i>
+                            </td>
+                            <td>
+                                <p class="bold mb-0" style="color: #fff!important; font-size: 15px;">{{ _options.Title}}</p>
+                                <span style="color: #fff!important;">{{ Message.content }}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+.csi_select ::ng-deep .ng-select-container {
+    border: 2px solid #CCC;
+}
+.csi_select.ng-select-opened ::ng-deep .ng-select-container {
+    border: 2px solid #05E;
+}
+.csi_select.has-error ::ng-deep .ng-select-container {
+    border: 2px solid #D22;
+}

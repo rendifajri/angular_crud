@@ -1,0 +1,127 @@
+<div class="row mt-2 mx-lg-5 mx-md-3 mx-1">
+  <div class="col-12 mb-2">
+    <h3 class="font-weight-normal">Employee</h3>
+  </div>
+  <div class="col-12">
+    <app-container>
+      <div class="col-12 mt-2 px-3">
+        <div class="btn-group">
+          <button type="button" style="width: 100px;" class="btn btn-sm border-white csi_bg_blue" (click)="addModalShow()"><i class="fa fa-plus"></i> Add New</button>
+          <button type="button" style="width: 100px;" class="btn btn-sm border-white csi_bg_light_blue" (click)="editModalShow()"><i class="fa fa-pencil"></i> Edit</button>
+          <button type="button" style="width: 100px;" class="btn btn-sm border-white csi_bg_light_red" (click)="deleteModalShow()"><i class="fa fa-trash"></i> Delete({{this.datatbl.rowsSelected.length}})</button>
+        </div>
+        <csi-datatbl #datatbl="csi-datatbl" [rows]="tableRows" [columns]="tableColumns" [loading]="tableLoading"></csi-datatbl>
+      </div>
+    </app-container>
+  </div>
+</div>
+
+<csi-modal #addModal="csi-modal" type="modal-xl" header="Add Employee">
+  <form #addForm="ngForm" (ngSubmit)="addOnSubmit(addForm)" autocomplete="off">
+    <div class="alert fade alert-danger text-white" style="min-height: 30px;" [class]="appError != '' ? 'show' : 'hide'">
+      {{appError}}
+      <button type="button" class="close" data-dismiss="alert" (click)="appError=''">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="row px-3">
+      <div class="col-lg-6 col-12">
+        <div class="form-group mb-2" [class.error]="addNameEle.error != ''">
+          <label class="mb-0">Name</label>
+          <csi-input-text #addNameEle="csi-input-text" type="text" name="addName" placeholder="Name" [(csiModel)]="addName" [required]="true"></csi-input-text>
+        </div>
+        <div class="form-group mb-2" [class.error]="addPhoneEle.error != ''">
+          <label class="mb-0">Phone</label>
+          <csi-input-text #addPhoneEle="csi-input-text" type="text" name="addPhone" placeholder="Phone" [(csiModel)]="addPhone" [required]="true"></csi-input-text>
+        </div>
+        <div class="form-group mb-2" [class.error]="addStatusEle.error != ''">
+          <label class="mb-0">Status</label>
+          <div class="ml-2">
+            <csi-input-radio #addStatusEle="csi-input-radio" name="addStatus" [arrData]="statusData" [(csiModel)]="addStatus" indexVal="id" indexText="name" formWidth="null" [required]="true"></csi-input-radio>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12">
+        <div class="form-group mb-2" [class.error]="addCompanyEle.error != ''">
+          <label class="mb-0">Company</label>
+            <csi-select #addCompanyEle="csi-select" name="addCompany" placeholder="Select Company" [arrData]="employeeData" [(csiModel)]="addCompany" indexVal="name" indexText="name" [required]="true"></csi-select>
+        </div>
+        <div class="form-group mb-2" [class.error]="addDeptEle.error != ''">
+          <label class="mb-0">Department</label>
+          <csi-input-text #addDeptEle="csi-input-text" type="text" name="addDept" placeholder="Department" [(csiModel)]="addDept" [required]="true"></csi-input-text>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-right">
+        <hr>
+        <csi-button type="button" style="width: 100px;" class="mr-2" classExtra="btn-block csi_bg_grey" (click)="addModal.hide()">Cancel</csi-button>
+        <csi-button #addButton="csi-button" type="submit" style="width: 100px;" classExtra="btn-block csi_bg_light_red" [disabled]="addForm.invalid">Save</csi-button>
+      </div>
+    </div>
+  </form>
+</csi-modal>
+
+<csi-modal #editModal="csi-modal" type="modal-xl" header="Edit Employee">
+  <form #editForm="ngForm" (ngSubmit)="editOnSubmit(editForm)" autocomplete="off">
+    <div class="alert fade alert-danger text-white" style="min-height: 30px;" [class]="appError != '' ? 'show' : 'hide'">
+      {{appError}}
+      <button type="button" class="close" data-dismiss="alert" (click)="appError=''">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="row px-3">
+      <div class="col-lg-6 col-12">
+        <div class="form-group mb-2" [class.error]="editNameEle.error != ''">
+          <label class="mb-0">Name</label>
+          <csi-input-text #editNameEle="csi-input-text" type="text" name="editName" placeholder="Name" [(csiModel)]="editName" [required]="true"></csi-input-text>
+        </div>
+        <div class="form-group mb-2" [class.error]="editPhoneEle.error != ''">
+          <label class="mb-0">Phone</label>
+          <csi-input-text #editPhoneEle="csi-input-text" type="text" name="editPhone" placeholder="Phone" [(csiModel)]="editPhone" [required]="true"></csi-input-text>
+        </div>
+        <div class="form-group mb-2" [class.error]="editStatusEle.error != ''">
+          <label class="mb-0">Status</label>
+          <div class="ml-2">
+            <csi-input-radio #editStatusEle="csi-input-radio" name="editStatus" [arrData]="statusData" [(csiModel)]="editStatus" indexVal="id" indexText="name" formWidth="null" [required]="true"></csi-input-radio>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12">
+        <div class="form-group mb-2" [class.error]="editCompanyEle.error != ''">
+          <label class="mb-0">Company</label>
+            <csi-select #editCompanyEle="csi-select" name="editCompany" placeholder="Select Company" [arrData]="employeeData" [(csiModel)]="editCompany" indexVal="name" indexText="name" [required]="true"></csi-select>
+        </div>
+        <div class="form-group mb-2" [class.error]="editDeptEle.error != ''">
+          <label class="mb-0">Department</label>
+          <csi-input-text #editDeptEle="csi-input-text" type="text" name="editDept" placeholder="Department" [(csiModel)]="editDept" [required]="true"></csi-input-text>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-right">
+        <hr>
+        <csi-button type="button" style="width: 100px;" class="mr-2" classExtra="btn-block csi_bg_grey" (click)="editModal.hide()">Cancel</csi-button>
+        <csi-button #editButton="csi-button" type="submit" style="width: 100px;" classExtra="btn-block csi_bg_light_red" [disabled]="editForm.invalid">Save</csi-button>
+      </div>
+    </div>
+  </form>
+</csi-modal>
+
+<csi-modal #deleteModal="csi-modal" type="modal-right" header="">
+  <div class="container-xs-height full-height">
+    <button type="button" class="close fs-15 mt-3 mr-3" data-dismiss="modal" (click)="deleteModal.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+    <div class="row-xs-height">
+      <div class="col-xs-height text-center px-3">
+        <h5 class="semi-bold" style="color:#F33">Are you sure you want to <b>delete</b> this data?</h5>
+        <br>
+        <!-- <button id="delete-data" data-id="" type="button" class="btn btn-block rounded csi_bg_light_red" (click)="deleteAction()">Yes</button>
+        <button type="button" class="btn btn-block rounded csi_bg_grey" (click)="deleteModal.hide()">Cancel</button> -->
+        <csi-button #delButton="csi-button" type="button" class="btn-block" classExtra="btn-block csi_bg_light_red" (click)="deleteAction()" id="delete-data" data-id="">Yes</csi-button>
+        <csi-button type="button" class="btn-block" classExtra="btn-block csi_bg_grey" (click)="deleteModal.hide()">Cancel</csi-button>
+      </div>
+    </div>
+  </div>
+</csi-modal>
